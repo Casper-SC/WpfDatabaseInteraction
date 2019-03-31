@@ -16,7 +16,7 @@ namespace DatabaseExample
         public void Initialize()
         {
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
-            // Чтобы это сработало, нужно у App.xaml поставить дейтсиве при построении в Page.
+            // Чтобы это сработало, нужно у App.xaml поставить действие при построении в Page.
             LoadComponent(this, new Uri("/DatabaseExample;component/App.xaml", UriKind.Relative));
         }
 
