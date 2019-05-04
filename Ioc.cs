@@ -1,4 +1,5 @@
-﻿using DatabaseExample.Database.Fake;
+﻿using System;
+using DatabaseExample.Database.Fake;
 using DatabaseExample.Database.Interfaces;
 using DatabaseExample.Services;
 using GalaSoft.MvvmLight.Ioc;
@@ -7,20 +8,27 @@ namespace DatabaseExample
 {
     public static class Ioc
     {
-        public static DatabaseService DatabaseService => SimpleIoc.Default.GetInstance<DatabaseService>();
+        private static SimpleIoc _ioc;
 
-        public static void Initialize(bool fake)
+        public static DatabaseService DatabaseService
         {
-            SimpleIoc.Default.Register<IDatabase, DatabaseImitation>();
+            get { return _ioc.GetInstance<DatabaseService>(); }
+        }
+
+        public static void Initialize(SimpleIoc ioc, bool fake)
+        {
+            _ioc = ioc ?? throw new ArgumentNullException(nameof(ioc));
+
+            ioc.Register<IDatabase, DatabaseImitation>();
             if (fake)
             {
-                SimpleIoc.Default.Register<IDatabaseInitializer, DatabaseInitializerDebug>();
+                ioc.Register<IDatabaseInitializer, DatabaseInitializerDebug>();
             }
             else
             {
-                SimpleIoc.Default.Register<IDatabaseInitializer, DatabaseInitializerDefault>();
+                ioc.Register<IDatabaseInitializer, DatabaseInitializerDefault>();
             }
-            SimpleIoc.Default.Register<DatabaseService>();
+            ioc.Register<DatabaseService>();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DatabaseExample.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            Ioc.Initialize(true);
+            Ioc.Initialize(SimpleIoc.Default, true);
 
             SimpleIoc.Default.Register<MainViewModel>();
         }
