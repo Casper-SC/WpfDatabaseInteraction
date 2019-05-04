@@ -22,7 +22,7 @@ namespace DatabaseExample
 
         public static void Start()
         {
-            App app = new App();
+            var app = new App();
             app.Initialize();
 
             var mainWindow = new MainWindow();
@@ -44,7 +44,7 @@ namespace DatabaseExample
             }
             catch (Exception ex)
             {
-                _logger.Error($"{nameof(OnMainWindowLoaded)}", ex.ToString());
+                _logger.Error($"{nameof(OnMainWindowLoaded)}.", ex.ToString());
             }
         }
     }

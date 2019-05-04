@@ -18,7 +18,10 @@ namespace DatabaseExample.ViewModel
             set
             {
                 if (value == _car.Model)
+                {
                     return;
+                }
+
                 _car.Model = value;
                 RaisePropertyChanged();
             }
@@ -30,7 +33,10 @@ namespace DatabaseExample.ViewModel
             set
             {
                 if (value == _car.Color)
+                {
                     return;
+                }
+
                 _car.Color = value;
                 RaisePropertyChanged();
             }

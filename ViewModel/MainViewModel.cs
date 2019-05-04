@@ -85,7 +85,7 @@ namespace DatabaseExample.ViewModel
             }
             catch (Exception ex)
             {
-                _logger.Error($"{nameof(Add)}", ex.ToString());
+                _logger.Error($"{nameof(Add)}.", ex.ToString());
             }
             finally
             {
